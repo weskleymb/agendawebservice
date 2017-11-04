@@ -10,22 +10,9 @@ public class Teste {
 
     public static void main(String[] args) {
 
-//        Aluno aluno = new Aluno();
-//
-//        aluno.setMatricula(2);
-//        aluno.setNome("Sobrinho");
-//        aluno.setEndereco("Rua das Flores, 75");
-//        aluno.setFone("3232-2514");
-//        aluno.setSite("www.sitedosobrinho.com.br");
-//        aluno.setNota(8.0);
-
-        
-
         AlunoDao dao =  new AlunoDao();
         
-        Aluno aluno = dao.selectByMatricula(2);
-        
-        dao.delete(aluno);
+        System.out.println(dao.selectAll());
 
         System.exit(0);
 

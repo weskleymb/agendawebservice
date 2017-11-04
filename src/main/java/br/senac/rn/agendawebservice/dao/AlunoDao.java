@@ -1,6 +1,7 @@
 package br.senac.rn.agendawebservice.dao;
 
 import br.senac.rn.agendawebservice.model.Aluno;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -46,6 +47,10 @@ public class AlunoDao {
     
     public Aluno selectByMatricula(Integer matricula) {
         return manager.find(Aluno.class, matricula);
+    }
+    
+    public List<Aluno> selectAll() {
+        return manager.createQuery("FROM Aluno aluno", Aluno.class).getResultList();
     }
     
 }

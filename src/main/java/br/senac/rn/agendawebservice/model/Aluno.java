@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name = "tb_alunos")
+@Entity
+@Table(name = "tb_alunos")
 public class Aluno implements Serializable, Comparable<Aluno> {
     
     @Id
