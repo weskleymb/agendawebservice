@@ -15,6 +15,10 @@ public class AlunoDao {
         factory = Persistence.createEntityManagerFactory("ConexaoDB");
         manager = factory.createEntityManager();
     }
+    
+    public void fechar() {
+        manager.close();
+    }
 
     public void insert(Aluno aluno) {
         change(Operacao.INSERIR, aluno);
@@ -42,7 +46,6 @@ public class AlunoDao {
                 break;
         }
         manager.getTransaction().commit();
-        manager.close();
     }
     
     public Aluno selectByMatricula(Integer matricula) {
@@ -52,5 +55,7 @@ public class AlunoDao {
     public List<Aluno> selectAll() {
         return manager.createQuery("FROM Aluno aluno", Aluno.class).getResultList();
     }
+    
+    
     
 }
