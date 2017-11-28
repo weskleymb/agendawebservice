@@ -48,8 +48,8 @@ public class AlunoDao {
         manager.getTransaction().commit();
     }
     
-    public Aluno selectByMatricula(Integer matricula) {
-        return manager.find(Aluno.class, matricula);
+    public Aluno selectById(Integer id) {
+        return manager.find(Aluno.class, id);
     }
     
     public List<Aluno> selectAll() {

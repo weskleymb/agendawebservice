@@ -8,14 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "tb_alunos")
+@XmlRootElement
 public class Aluno implements Serializable, Comparable<Aluno> {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer matricula;
+    private Integer id;
     private String nome;
     private String endereco;
     private String fone;
@@ -32,8 +34,8 @@ public class Aluno implements Serializable, Comparable<Aluno> {
         this.nota = nota;
     }
 
-    public Integer getMatricula() {
-        return matricula;
+    public Integer getId() {
+        return id;
     }
 
     public String getNome() {
@@ -56,8 +58,8 @@ public class Aluno implements Serializable, Comparable<Aluno> {
         return nota;
     }
 
-    public void setMatricula(Integer matricula) {
-        this.matricula = matricula;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {
@@ -83,7 +85,7 @@ public class Aluno implements Serializable, Comparable<Aluno> {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 23 * hash + Objects.hashCode(this.matricula);
+        hash = 23 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -99,7 +101,7 @@ public class Aluno implements Serializable, Comparable<Aluno> {
             return false;
         }
         final Aluno other = (Aluno) obj;
-        if (!Objects.equals(this.matricula, other.matricula)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -107,12 +109,12 @@ public class Aluno implements Serializable, Comparable<Aluno> {
 
     @Override
     public String toString() {
-        return "Aluno{" + "matricula=" + matricula + ", nome=" + nome + ", endereco=" + endereco + ", fone=" + fone + ", site=" + site + ", nota=" + nota + '}';
+        return "Aluno{" + "id=" + id + ", nome=" + nome + ", endereco=" + endereco + ", fone=" + fone + ", site=" + site + ", nota=" + nota + '}';
     }
 
     @Override
     public int compareTo(Aluno aluno) {
-        return compare(this.matricula, aluno.matricula);
+        return compare(this.id, aluno.id);
     }
     
 }

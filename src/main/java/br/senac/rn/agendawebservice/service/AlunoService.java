@@ -4,8 +4,10 @@ import br.senac.rn.agendawebservice.dao.AlunoDao;
 import br.senac.rn.agendawebservice.model.Aluno;
 import java.util.List;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -23,15 +25,25 @@ public class AlunoService {
         dao.insert(aluno);
     }
     
-    public void editar() {}
+    @PUT
+    @Path("/editar")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public void editar(Aluno aluno) {
+        dao.update(aluno);
+    }
     
-    public void excluir() {}
+    @DELETE
+    @Path("/remover/{matricula}")
+    public void excluir(@PathParam("matricula") Integer id) {
+        Aluno aluno = dao.selectById(id);
+        dao.delete(aluno);
+    }
     
     @GET
     @Path("/matricula/{matricula}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Aluno buscarPorMatricula(@PathParam("matricula")  Integer matricula) { 
-        return dao.selectByMatricula(matricula);
+    public Aluno buscarPorMatricula(@PathParam("matricula")  Integer id) { 
+        return dao.selectById(id);
     }
     
     @GET
